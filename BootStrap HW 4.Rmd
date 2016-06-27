@@ -1,0 +1,36 @@
+---
+title: "BootStrap"
+author: "Marvin Scott"
+date: "June 27, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+###     BootStrap Process for 1000 samples of size = 7
+###### *NOTE:* BootStrap Procedure gives proof of the Central Limit Theroem
+
+
+```{r echo=TRUE}
+## Assign Sample to Varible 
+x<- c(23, 21 , 39 , 45, 12, 28, 29)
+P<- 1000
+bootmean <- numeric(P)
+###Function executed for 1000 loops 
+for (i in 1:P) {
+bootsample <- sample(x, size = length(x), replace = TRUE)
+bootmean [i] <- mean (bootsample)
+}
+bootmean
+```
+
+### Below Plots provides proof of the Central Limit Theroem, IE values should appear noramlly distributed.  
+
+```{r  echo=TRUE}
+hist(bootmean)
+qqnorm(bootmean)
+
+```
+
+
