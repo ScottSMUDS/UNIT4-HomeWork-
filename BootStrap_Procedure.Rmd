@@ -1,0 +1,93 @@
+---
+title: "BootStrap"
+author: "Marvin Scott"
+date: "June 27, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+###    Write bootstrap code to illustrate the central limit theorem in R markdown 
+###    Use a normal distribution with two different sample sizes.
+
+
+###### **BootStrap Procedure Sample size 25  from Normal Distribution**
+```{r echo=TRUE}
+## Assign Sample to Varible 
+w<-rnorm(25, 9, 1.97)
+p<-1000
+brnorm<- numeric(p)
+###Function executed for 1000 loops/samplings 
+for (i in 1:p) {
+nmsample<- sample(w, size = 25, replace = TRUE)
+brnorm[i]<- mean(nmsample)
+}
+brnorm
+```
+
+
+###### **BootStrap Procedure Sample size 85**
+```{r echo=TRUE}
+## Assign Sample to Varible 
+w<-rnorm(85, 9, 1.97)
+p<-1000
+brnorm<- numeric(p)
+###Function executed for 1000 loops/samplings 
+for (i in 1:p) {
+nmsample<- sample(w, size = 85, replace = TRUE)
+brnorm[i]<- mean(nmsample)
+}
+brnorm
+```
+
+
+###### *NOTE:* BootStrap Procedure gives proof of the Central Limit Theroem, IE noraml distribution.
+```{r  echo=TRUE}
+hist(brnorm)
+qqnorm(brnorm)
+
+```
+
+
+
+
+###### **BootStrap Procedure Sample size 20  from Exponential Distribution**
+```{r echo=TRUE}
+## Assign Sample to Varible 
+w<-rexp(20)
+p<-1000
+brexp<- numeric(p)
+###Function executed for 1000 loops/samplings 
+for (i in 1:p) {
+rexpsample<- sample(w, size = 20, replace = TRUE)
+brexp[i]<- mean(rexpsample)
+}
+brexp
+```
+
+
+###### **BootStrap Procedure Sample size 80**
+```{r echo=TRUE}
+## Assign Sample to Varible 
+w<-rexp(80)
+p<-1000
+brexp<- numeric(p)
+###Function executed for 1000 loops/samplings 
+for (i in 1:p) {
+rexpsample<- sample(w, size = 80, replace = TRUE)
+brexp[i]<- mean(rexpsample)
+}
+brexp
+```
+
+
+
+###### *NOTE:* BootStrap Procedure gives proof of the Central Limit Theroem, IE noraml distribution.
+```{r  echo=TRUE}
+hist(brexp)
+qqnorm(brexp)
+
+```
+
+
